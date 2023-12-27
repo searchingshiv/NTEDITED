@@ -68,8 +68,7 @@ async def delete_after_delay(message, delay):
     await message.delete()
 
     if bool(CUSTOM_CAPTION) and bool(message.document):
-        caption = CUSTOM_CAPTION.format(previouscaption="" if not message.caption else message.caption.html,
-                                        filename=message.document.file_name)
+        caption = CUSTOM_CAPTION.format(previouscaption="" if not message.caption else message.caption.html, filename=message.document.file_name)
     else:
         caption = "" if not message.caption else message.caption.html
 
@@ -79,9 +78,7 @@ async def delete_after_delay(message, delay):
         reply_markup = None
 
     try:
-            lodu = await message.msg.copy(chat_id=message.from_user.id, file_id=file_id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
-        # If 'message' is an image, audio, video, etc., adjust the code accordingly
-
+        lodu = await message.msg.copy(chat_id=message.from_user.id, file_id=file_id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
         asyncio.ensure_future(delete_after_delay(message, 5))  # Schedule deletion after 5 seconds
 
     except FloodWait as e:
