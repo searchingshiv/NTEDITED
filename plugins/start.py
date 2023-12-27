@@ -63,6 +63,10 @@ async def start_command(client: Client, message: Message):
             return
         await temp_msg.delete()
 
+async def delete_after_delay(message, delay):
+                await asyncio.sleep(5)
+                await message.delete()
+
         for msg in messages:
 
             if bool(CUSTOM_CAPTION) & bool(msg.document):
