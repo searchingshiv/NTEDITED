@@ -80,8 +80,7 @@ async def delete_after_delay(message, delay):
             reply_markup = None
 
         try:
-            lodu = await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML,
-                                  reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
+            lodu = await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
             asyncio.ensure_future(delete_after_delay(lodu, 5))  # Schedule deletion after 5 seconds
 
         except FloodWait as e:
