@@ -79,19 +79,14 @@ async def delete_after_delay(message, delay):
         reply_markup = None
 
     try:
-        # Assuming 'message' is a file message
-        if message.document:
-            file_id = message.document.file_id
-            await message.copy_document(chat_id=message.from_user.id, file_id=file_id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
+            lodu = await message.msg.copy(chat_id=message.from_user.id, file_id=file_id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
         # If 'message' is an image, audio, video, etc., adjust the code accordingly
 
         asyncio.ensure_future(delete_after_delay(message, 5))  # Schedule deletion after 5 seconds
 
     except FloodWait as e:
         await asyncio.sleep(e.x)
-        if message.document:
-            file_id = message.document.file_id
-            await message.copy_document(chat_id=message.from_user.id, file_id=file_id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
+            await message.msg.copy(chat_id=message.from_user.id, file_id=file_id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
         # Adjust for other types of messages if needed
 
     except:
