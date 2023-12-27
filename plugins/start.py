@@ -63,52 +63,47 @@ async def start_command(client: Client, message: Message):
             return
         await temp_msg.delete()
 
-async def delete_after_delay(message, delay):
-    await asyncio.sleep(5)
-    await message.delete()
+        for msg in messages:
 
-    if bool(CUSTOM_CAPTION) and bool(message.document):
-        caption = CUSTOM_CAPTION.format(previouscaption="" if not message.caption else message.caption.html, filename=message.document.file_name)
-    else:
-        caption = "" if not message.caption else message.caption.html
+            if bool(CUSTOM_CAPTION) & bool(msg.document):
+                caption = CUSTOM_CAPTION.format(previouscaption = "" if not msg.caption else msg.caption.html, filename = msg.document.file_name)
+            else:
+                caption = "" if not msg.caption else msg.caption.html
 
-    if DISABLE_CHANNEL_BUTTON:
-        reply_markup = message.reply_markup
-    else:
-        reply_markup = None
+            if DISABLE_CHANNEL_BUTTON:
+                reply_markup = msg.reply_markup
+            else:
+                reply_markup = None
 
-    try:
-        lodu = await message.msg.copy(chat_id=message.from_user.id, file_id=file_id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
-        asyncio.ensure_future(delete_after_delay(message, 5))  # Schedule deletion after 5 seconds
-
-    except FloodWait as e:
-        await asyncio.sleep(e.x)
-        await message.msg.copy(chat_id=message.from_user.id, file_id=file_id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
-        # Adjust for other types of messages if needed
-
-    except:
-        pass
-
+            try:
+                await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT)
+                await asyncio.sleep(0.5)
+            except FloodWait as e:
+                await asyncio.sleep(e.x)
+                await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT)
+            except:
+                pass
+        return
     else:
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("😊 About Me", callback_data="about"),
-                    InlineKeyboardButton("🔒 Close", callback_data="close")
+                    InlineKeyboardButton("😊 About Me", callback_data = "about"),
+                    InlineKeyboardButton("🔒 Close", callback_data = "close")
                 ]
             ]
         )
         await message.reply_text(
-            text=START_MSG.format(
-                first=message.from_user.first_name,
-                last=message.from_user.last_name,
-                username=None if not message.from_user.username else '@' + message.from_user.username,
-                mention=message.from_user.mention,
-                id=message.from_user.id
+            text = START_MSG.format(
+                first = message.from_user.first_name,
+                last = message.from_user.last_name,
+                username = None if not message.from_user.username else '@' + message.from_user.username,
+                mention = message.from_user.mention,
+                id = message.from_user.id
             ),
-            reply_markup=reply_markup,
-            disable_web_page_preview=True,
-            quote=True
+            reply_markup = reply_markup,
+            disable_web_page_preview = True,
+            quote = True
         )
         return
 
