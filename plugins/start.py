@@ -83,7 +83,7 @@ async def delete_after_delay(message, delay):
 
     except FloodWait as e:
         await asyncio.sleep(e.x)
-            await message.msg.copy(chat_id=message.from_user.id, file_id=file_id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
+        await message.msg.copy(chat_id=message.from_user.id, file_id=file_id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
         # Adjust for other types of messages if needed
 
     except:
