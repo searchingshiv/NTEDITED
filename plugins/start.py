@@ -67,7 +67,7 @@ async def delete_after_delay(message, delay):
     await asyncio.sleep(5)
     await message.delete()
 
-        for msg in messages:
+    for msg in messages:
 
             if bool(CUSTOM_CAPTION) & bool(msg.document):
                 caption = CUSTOM_CAPTION.format(previouscaption = "" if not msg.caption else msg.caption.html, filename = msg.document.file_name)
