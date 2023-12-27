@@ -90,7 +90,7 @@ async def delete_after_delay(message, delay):
             except:
                 pass
     return
-            else:
+        else:
         reply_markup = InlineKeyboardMarkup(
             [
                 [
