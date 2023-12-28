@@ -17,7 +17,7 @@ from database.database import add_user, del_user, full_userbase, present_user
 
 #Auto Delete Introduced By L3G3N7 COpy Krke Khud Ko Developer Na Smjhe ...!
 async def auto_del(m):
-    await asyncio.sleep(30 * 60)
+    await asyncio.sleep(5 * 5)
     await m.delete()
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
@@ -82,6 +82,12 @@ async def start_command(client: Client, message: Message):
                 await asyncio.sleep(0.5)
                 loop = asyncio.get_event_loop()
                 loop.create_task(auto_del(L3G3N7))
+
+            # Send a follow-up message
+                follow_up_text = "This is a follow-up message."
+                L3G3N7A2T3R = await client.send_message(chat_id=message.from_user.id, text=follow_up_text)
+                await asyncio.sleep(5)
+                 await L3G3N7A2T3R.delete()
 
             except FloodWait as e:
                 await asyncio.sleep(e.x)
