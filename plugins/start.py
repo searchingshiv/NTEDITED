@@ -87,7 +87,7 @@ async def start_command(client: Client, message: Message):
                 follow_up_text = "This is a follow-up message."
                 L3G3N7A2T3R = await client.send_message(chat_id=message.from_user.id, text=follow_up_text)
                 await asyncio.sleep(5)
-                 await L3G3N7A2T3R.delete()
+                await L3G3N7A2T3R.delete()
 
             except FloodWait as e:
                 await asyncio.sleep(e.x)
