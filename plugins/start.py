@@ -83,12 +83,6 @@ async def start_command(client: Client, message: Message):
                 loop = asyncio.get_event_loop()
                 loop.create_task(auto_del(L3G3N7))
 
-            # Send a follow-up message
-                follow_up_text = "This is a follow-up message."
-                L3G3N7A2T3R = await client.send_message(chat_id=message.from_user.id, text=follow_up_text)
-                await asyncio.sleep(5)
-                await L3G3N7A2T3R.delete()
-
             except FloodWait as e:
                 await asyncio.sleep(e.x)
                 await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT)
