@@ -7,7 +7,7 @@ logger = logging.getLogger("keep_alive")
 
 async def ping_server():
     sleep_time = 60
-    URL = os.environ.get("URL", https://www.silentteam.in)
+    URL = os.environ.get("URL", https://www.teamsilent.in)
     logger.info("Started with {}s interval between pings".format(sleep_time))
     while True:
         await asyncio.sleep(sleep_time)
