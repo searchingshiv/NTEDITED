@@ -17,7 +17,7 @@ from database.database import add_user, del_user, full_userbase, present_user
 
 #Auto Delete Introduced By L3G3N7 COpy Krke Khud Ko Developer Na Smjhe ...!
 async def auto_del(m):
-    await asyncio.sleep(5 * 5)
+    await asyncio.sleep(30 * 60)
     await m.delete()
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
