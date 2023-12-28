@@ -15,7 +15,7 @@ async def ping_server():
             async with aiohttp.ClientSession(
                 timeout=aiohttp.ClientTimeout(total=10)
             ) as session:
-                async with session.get(Var.URL) as resp:
+                async with session.get(URL) as resp:
                     logger.info("Pinged server with response: {}".format(resp.status))
         except TimeoutError:
             logger.warning("Couldn't connect to the site URL..")
