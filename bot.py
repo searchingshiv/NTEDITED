@@ -1,3 +1,6 @@
+pip install pyrogram TgCrypto pyromod==1.5 pymongo dnspython aiohttp
+
+
 from aiohttp import web
 from plugins import web_server
 
