@@ -1,4 +1,4 @@
-pip install pyrogram TgCrypto pyromod==1.5 pymongo dnspython aiohttp
+# pip install pyrogram TgCrypto pyromod==1.5 pymongo dnspython aiohttp
 
 
 from aiohttp import web
