@@ -43,8 +43,8 @@ services:
 
   - type: cron
     name: Daily Restart
-    cron: "0 0 * * *"
-    command: "curl -X POST https://api.render.com/v1/services/{your-service-id}/deploys"
+    # cron: "0 0 * * *"
+    # command: "curl -X POST https://api.render.com/v1/services/{your-service-id}/deploys"
     envVars:
       - key: RENDER_API_KEY
         value: "" # Add your Render API key here
