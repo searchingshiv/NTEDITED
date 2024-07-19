@@ -1,0 +1,50 @@
+# render.yaml
+
+services:
+  - type: web
+    name: CodexBotz
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: "python3 main.py"
+    envVars:
+      - key: TG_BOT_TOKEN
+        value: "" # Add your Telegram bot token here
+      - key: APP_ID
+        value: "16536417"
+      - key: API_HASH
+        value: "f6e58a549da642d7b765744a2f82c6d9"
+      - key: CHANNEL_ID
+        value: "-1002137320449"
+      - key: OWNER_ID
+        value: "921365334"
+      - key: PORT
+        value: "8081"
+      - key: DATABASE_URL
+        value: "mongodb+srv://trumbot:trumbot@cluster0.cfkaeno.mongodb.net/?retryWrites=true&w=majority"
+      - key: DATABASE_NAME
+        value: "tvshowtest1khhk"
+      - key: FORCE_SUB_CHANNEL
+        value: "0"
+      - key: TG_BOT_WORKERS
+        value: "100"
+      - key: START_MESSAGE
+        value: "Hello {first}\n\nI can store private files in Specified Channel and other users can access it from special link."
+      - key: ADMINS
+        value: "6177102464 1571060413 974706111 1562935405 5103171472 5075494391 5446648312 5614964062 563896360 974706111 5103171472 1562935405 921365334 5614964062"
+      - key: FORCE_SUB_MESSAGE
+        value: "Hello {first}\n\n<b>You need to join in my Channel/Group to use me\n\nKindly Please join Channel</b>"
+      - key: CUSTOM_CAPTION
+        value: ""
+      - key: PROTECT_CONTENT
+        value: "False"
+      - key: DISABLE_CHANNEL_BUTTON
+        value: "False"
+
+  - type: cron
+    name: Daily Restart
+    cron: "0 0 * * *"
+    command: "curl -X POST https://api.render.com/v1/services/{your-service-id}/deploys"
+    envVars:
+      - key: RENDER_API_KEY
+        value: "" # Add your Render API key here
