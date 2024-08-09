@@ -1,8 +1,10 @@
 FROM python:3.8-slim-buster
 WORKDIR /app
 
+# Update package lists and install git
+RUN apt-get update && apt-get -y install git
+
 COPY requirements.txt requirements.txt
-RUN apt-get -y install git
 RUN pip3 install -r requirements.txt
 
 COPY . .
