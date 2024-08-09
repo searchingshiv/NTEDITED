@@ -1,9 +1,8 @@
-# --- For-Bot-Working --------- #
-git+https://github.com/searchingshiv/pyrogram.git
-git+https://github.com/searchingshiv/tgcrypto.git
+pyrogram
+TgCrypto
 pyromod==1.5
 # --- For-Database ------------ #
-git+https://github.com/searchingshiv/mongo-python-driver.git
-git+https://github.com/searchingshiv/dnspython.git
+pymongo
+dnspython
 # --- For-Web-Response ------- #
-git+https://github.com/searchingshiv/aiohttp
+aiohttp
